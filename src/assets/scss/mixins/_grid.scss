@@ -1,0 +1,14 @@
+@mixin container {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 1440px) 1fr;
+    grid-gap: 45px;
+    height: 100%;
+}
+
+@mixin row {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 30px;
+}
