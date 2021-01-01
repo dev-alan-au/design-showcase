@@ -1,13 +1,15 @@
 <template>
-    <header class="header">
+    <header class="site-header" :class="{'page-scrolled': pageHasScrolled}" @scroll.passive="console.log($event)">
         <div class="container">
             <div class="menu-toggle">
-                <button class="menu-button">
+                <button class="menu-button" @click="$emit('update:menuState')">
                     <menu-icon :decorative="true" title="Toggle Menu" />
                     <span>Menu</span>
                 </button>
             </div>
-            <page-nav :menu-items="menuItems" />
+            <div class="site-logo">
+                <a href="/">Logo</a>
+            </div>
         </div>
     </header>
 </template>
@@ -15,14 +17,13 @@
 
 <script>
 import MenuIcon from 'vue3-material-design-icons/Menu.vue';
-import PageNav from '@/components/PageNav';
 
 export default {
     name: 'PageHeader',
-    props: ['menuItems'],
+    props: ['pageHasScrolled'],
+    emits: ['update:menuState'],
     components: {
-        MenuIcon,
-        PageNav
+        MenuIcon
     }
 }
 </script>
@@ -30,16 +31,22 @@ export default {
 <style lang="scss" scoped>
     @import '../assets/scss/mixins.scss';
 
-    .header {
+    .site-header {
         height: 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: background-color .3s ease-in-out;
+
+        &.page-scrolled {
+            background-color: white;
+        }
     }
 
     .container {
         @include container;
-    }
-
-    .row {
-        @include row;
     }
 
     .menu-toggle {
@@ -58,5 +65,10 @@ export default {
         cursor: pointer;
         background-color: transparent;
         border: 0;
+    }
+
+    .site-logo {
+        grid-column-start: 3;
+        grid-column-end: 4;
     }
 </style>
