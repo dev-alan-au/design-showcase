@@ -44,10 +44,18 @@ export default {
     .site-nav {
         width: 300px;
         position: fixed;
+        z-index: map-get($z-index, side-nav);
         left: 0;
         top: 0;
         bottom: 0;
         background: blueviolet;
         transform: translateX(-300px);
+        transition: transform .5s ease-in-out;
+    }
+
+    html[data-menu-visible="true"] {
+        .site-nav {
+            transform: translateX(0);
+        }
     }
 </style>

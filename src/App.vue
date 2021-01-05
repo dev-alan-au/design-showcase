@@ -1,9 +1,9 @@
 <template>
-  <div class="page" :class="{'menu-visible': menuIsVisible}">
-    <div class="page-overlay" @click="toggleMenu(false)"></div>
-    <page-nav :menu-items="menuItems" />
+  <div class="page-overlay" @click="toggleMenu(false)"></div>
+  <page-nav :menu-items="menuItems" />
+  <page-header @update:menu-state="toggleMenu" :page-has-scrolled="pageHasScrolled" />
+  <div class="page">
     <div class="page-wrapper">
-      <page-header @update:menu-state="toggleMenu" :page-has-scrolled="pageHasScrolled" />
       <div class="filler"></div>
     </div>
   </div>
@@ -94,10 +94,11 @@ export default {
   html[data-menu-visible="true"] {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
 
     body {
       height: 100%;
+      overflow: hidden;
     }
   }
 
@@ -111,26 +112,30 @@ export default {
   .page {
     display: flex;
     position: relative;
+    z-index: map-get($z-index, page);
+    transform: translateX(0);
     transition: transform .5s ease-in-out;
 
     &::before {
       content: '';
       height: 100vh;
     }
+  }
 
-    &.menu-visible {
+  html[data-menu-visible="true"] {
+    .page {
       transform: translateX(300px);
+    }
 
-      .page-overlay {
-        z-index: 100;
-        opacity: 1;
-        visibility: visible;
-      }
+    .page-overlay {
+      z-index: map-get($z-index, page-overlay);
+      opacity: 1;
+      visibility: visible;
     }
   }
 
   .page-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

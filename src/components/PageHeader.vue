@@ -29,15 +29,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '../assets/scss/mixins.scss';
-
     .site-header {
         height: 100px;
         position: fixed;
+        z-index: map-get($z-index, top-nav);
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
         transition: background-color .3s ease-in-out;
 
         &.page-scrolled {
