@@ -3,7 +3,7 @@
         <template v-if="menuItems && menuItems.length">
             <ul>
                 <li v-for="{ key, route, isActive, name, icon } in menuItems" :key="key">
-                    <a :href="route" :class="{active: isActive}">
+                    <router-link :to="route" :class="{active: isActive}">
                         <span v-if="icon" class="icon">
                             <!-- Reactive overhead when using a dynamic component; using if instead -->
                             <template v-if="icon === 'home'">
@@ -15,9 +15,12 @@
                             <template v-else-if="icon === 'package'">
                                 <package-icon :decorative="true" />
                             </template>
+                            <template v-else-if="icon === 'human'">
+                                <human-child-icon :decorative="true" />
+                            </template>
                         </span>
                         <span class="text">{{ name }}</span>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </template>
@@ -28,6 +31,7 @@
 import HomeIcon from 'vue3-material-design-icons/Home.vue';
 import NinjaIcon from 'vue3-material-design-icons/Ninja.vue';
 import PackageIcon from 'vue3-material-design-icons/Package.vue';
+import HumanChildIcon from 'vue3-material-design-icons/HumanChild';
 
 export default {
     name: 'PageNav',
@@ -35,7 +39,8 @@ export default {
     components: {
         HomeIcon,
         NinjaIcon,
-        PackageIcon
+        PackageIcon,
+        HumanChildIcon
     }
 }
 </script>

@@ -1,7 +1,5 @@
-const path = require('path');
-
 module.exports = {
-	configureWebpack: config => {
+	configureWebpack: () => {
 		if (process.env.NODE_ENV === 'production') {
 			// mutate config for production...
 		} else {

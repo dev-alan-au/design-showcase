@@ -4,8 +4,7 @@
   <page-header @update:menu-state="toggleMenu" :page-has-scrolled="pageHasScrolled" />
   <div class="page">
     <div class="page-wrapper">
-      <router-view></router-view>
-      <div class="filler"></div>
+      <router-view />
     </div>
   </div>
 </template>
@@ -37,15 +36,22 @@ export default {
         {
           id: 2,
           name: 'Latest Collection',
-          route: '/collections/latest/',
+          route: '/collection/latest/',
           icon: 'ninja',
           isActive: false
         },
         {
           id: 3,
           name: 'Archive',
-          route: '/collections/archive/',
+          route: '/collection/archive/',
           icon: 'package',
+          isActive: false
+        },
+        {
+          id: 4,
+          name: 'Contact Us',
+          route: '/contact-us/',
+          icon: 'human',
           isActive: false
         }
       ],
@@ -70,6 +76,10 @@ export default {
     }
   },
   watch: {
+    $route(to) {
+      document.title = to.meta.title || '';
+      this.toggleMenu(false);
+    },
     menuIsVisible() {
       this.dom.html.setAttribute('data-menu-visible', this.menuIsVisible);
     }
