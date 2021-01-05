@@ -4,6 +4,7 @@
   <page-header @update:menu-state="toggleMenu" :page-has-scrolled="pageHasScrolled" />
   <div class="page">
     <div class="page-wrapper">
+      <router-view></router-view>
       <div class="filler"></div>
     </div>
   </div>

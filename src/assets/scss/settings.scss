@@ -3,4 +3,10 @@ $z-index: (
     "page-overlay": 91,
     "top-nav": 90,
     "page": 10
-)
+);
+
+$font-cursive: 'Hanalei Fill', cursive;
+
+$fonts: (
+    "splash-heading": $font-cursive
+);
