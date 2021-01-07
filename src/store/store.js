@@ -35,8 +35,14 @@ const store = createStore({
     socialLinks: [
       {
         id: 1,
-        name: 'website',
+        name: 'Website',
         icon: 'globe',
+        url: '#0'
+      },
+      {
+        id: 2,
+        name: 'Chat',
+        icon: 'chat',
         url: '#0'
       },
       {
@@ -45,7 +51,26 @@ const store = createStore({
         icon: 'instagram',
         url: '#0'
       }
-    ]
+    ],
+    galleries: {
+      homepageHero: {
+        basePath: '/img/homepage-hero/',
+        images: [
+          {
+            name: 'AJ Garcia',
+            url: 'aj-garcia-aqmX9m2mHPQ-unsplash.jpg'
+          },
+          {
+            name: 'Brook Cagel',
+            url: 'brooke-cagle-zF8ss0qB_ik-unsplash.jpg'
+          },
+          {
+            name: 'Chattersnap',
+            url: 'chuttersnap-pOhAuDUci0s-unsplash.jpg'
+          }
+        ]
+      }
+    }
   },
 });
 

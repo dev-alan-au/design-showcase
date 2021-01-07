@@ -12,7 +12,7 @@
 				</button>
 			</div>
 			<div class="site-logo">
-				<a href="/">Logo</a>
+				<a href="/"><logo /></a>
 			</div>
 		</div>
 	</header>
@@ -20,6 +20,7 @@
 
 <script>
 import MenuIcon from "vue3-material-design-icons/Menu.vue";
+import Logo from "@/assets/img/logo-instill.vue";
 
 export default {
 	name: "PageHeader",
@@ -27,13 +28,14 @@ export default {
 	emits: ["update:menuState"],
 	components: {
 		MenuIcon,
-	},
+		Logo
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 .site-header {
-	height: 100px;
+	height: $header-height;
 	position: fixed;
 	z-index: map-get($z-index, top-nav);
 	top: 0;

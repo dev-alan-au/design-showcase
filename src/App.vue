@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import PageNav from './components/PageNav.vue';
-import PageHeader from './components/PageHeader.vue';
+import PageNav from '@/components/PageNav.vue';
+import PageHeader from '@/components/PageHeader.vue';
 import PageFooter from '@/components/PageFooter.vue';
 
 export default {
