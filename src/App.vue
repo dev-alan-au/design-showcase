@@ -1,10 +1,11 @@
 <template>
   <div class="page-overlay" @click="toggleMenu(false)"></div>
-  <page-nav :menu-items="menuItems" />
+  <page-nav />
   <page-header @update:menu-state="toggleMenu" :page-has-scrolled="pageHasScrolled" />
   <div class="page">
     <div class="page-wrapper">
       <router-view />
+      <page-footer />
     </div>
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import PageNav from './components/PageNav.vue';
 import PageHeader from './components/PageHeader.vue';
+import PageFooter from '@/components/PageFooter.vue';
 
 export default {
   name: 'App',
   components: {
     PageHeader,
-    PageNav
+    PageNav,
+    PageFooter
   },
   data() {
     return {
@@ -25,36 +28,6 @@ export default {
         html: null
       },
       menuIsVisible: false,
-      menuItems: [
-        {
-          id: 1,
-          name: 'Home',
-          route: '/',
-          icon: 'home',
-          isActive: true
-        },
-        {
-          id: 2,
-          name: 'Latest Collection',
-          route: '/collection/latest/',
-          icon: 'ninja',
-          isActive: false
-        },
-        {
-          id: 3,
-          name: 'Archive',
-          route: '/collection/archive/',
-          icon: 'package',
-          isActive: false
-        },
-        {
-          id: 4,
-          name: 'Contact Us',
-          route: '/contact-us/',
-          icon: 'human',
-          isActive: false
-        }
-      ],
       pageHasScrolled: false
     }
   },

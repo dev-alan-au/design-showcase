@@ -1,10 +1,10 @@
 <template>
-    <h1 v-text="heading"></h1>
+	<h1 v-text="heading"></h1>
 </template>
 
 <script>
 export default {
-    name: 'Hero',
-    props: ['heading', 'images']
-}
+	name: "Hero",
+	props: ["heading", "images"],
+};
 </script>
